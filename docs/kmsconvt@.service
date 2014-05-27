@@ -29,7 +29,6 @@
 Description=KMS System Console on %I
 Documentation=man:kmscon(1)
 After=systemd-user-sessions.service
-After=plymouth-quit-wait.service
 Before=getty.target
 Conflicts=getty@%i.service
 OnFailure=getty@%i.service
@@ -37,7 +36,7 @@ IgnoreOnIsolate=yes
 ConditionPathExists=/dev/tty0
 
 [Service]
-ExecStart=/usr/bin/kmscon "--vt=%I" --seats=seat0 --no-switchvt
+ExecStart=/usr/bin/kmscon "--vt=%I" --seats=seat0 --no-switchvt --hwaccel
 UtmpIdentifier=%I
 TTYPath=/dev/%I
 TTYReset=yes
